@@ -1,0 +1,47 @@
+{{>layout/header}}
+<script>
+    function update() {
+        $.ajax({
+                dataType: "json",
+                method: "post",
+                url: "/api/updateproc",
+                data: {
+                    "no": $("#no").val(),
+                    "title": $("#title").val(),
+                    "content": $("#content").val(),
+                    },
+                success: function(data){
+                    alert('업데이트');
+                     location.href = '/';
+                }
+        });
+    }
+</script>
+
+<h1>게시글 업데이트</h1>
+
+<form>
+<table>
+    <tr>
+        <td>NO</td>
+        <td><input type="text" class="form-control" id="no" placeholder="수정할 글 번호 입력"></td>
+    </tr>
+    <tr>
+        <td>제목</td>
+        <td><input type="text" class="form-control" id="title" placeholder="수정할 글 번호 입력"></td>
+    </tr>
+    <tr>
+        <td>내용</td>
+        <td><textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="button" onclick="update()">등록</button>
+        </td>
+    </tr>
+
+</form>
+
+    </div>
+</div>
+{{>layout/footer}}

@@ -1,0 +1,42 @@
+{{>layout/header}}
+<script>
+    function save() {
+
+        $.ajax({
+			dataType: "json",
+			method: "post",
+			url: "/api/saveproc",
+			data: {
+				"title": $("#title").val(),
+				"content": $("#content").val()
+				},
+			success: function(data){
+
+			    alert('등록되었습니다.');
+			    location.href = '/';
+
+			}
+		});
+    }
+</script>
+
+<h1>게시글 등록</h1>
+
+<form>
+<table width="800">
+    <tr>
+        <td>제목 </td>
+        <td><input type="text" class="form-control" id="title" placeholder="제목을 입력하세요"></td>
+    </tr>
+    <tr>
+        <td>내용</td>
+        <td><textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="button" onclick="save()">등록</button>
+        </td>
+    </tr>
+</table>
+</form>
+{{>layout/footer}}

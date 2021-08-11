@@ -1,0 +1,24 @@
+{{>layout/header}}
+
+<h1>bob demo project</h1>
+<br>
+<table width=800 border="1">
+    <tr>
+        <td><b>번호</b></td>
+        <td><b>제목</b></td>
+        <td><b>내용</b></td>
+    </tr>
+
+    {{#resultList}}
+        <tr>
+            <td>{{no}}</td>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+        </tr>
+    {{/resultList}}
+
+</table>
+<br>
+<a href="/board/save" role="button" class="btn btn-primary">글쓰기</a>
+
+{{>layout/footer}}

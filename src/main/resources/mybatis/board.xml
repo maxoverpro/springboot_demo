@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- /resources/mybatis/BoardMapper.xml -->
+<mapper namespace="com.bobdev.board.mapper.BoardSqlMapper">
+
+    <!-- 게시판 리스트 -->
+    <select id="selectList" resultType="com.bobdev.board.model.BoardDto">
+        /* selectList */
+        select no, title, content, date_format(regdate,'%Y.%m.%d %H:%i:%s') as regdate from BOB_BOARD
+    </select>
+
+    <insert id="insertData">
+        /* insertData */
+        INSERT INTO BOB_BOARD
+        (
+            title,
+            content,
+            regdate
+        ) VALUES
+        (
+            #{title},
+            #{content},
+            NOW()
+        )
+    </insert>
+
+    <update id="updateData">
+        UPDATE BOB_BOARD SET
+            title = #{title} ,
+            content = #{content}
+        WHERE
+            no = #{no}
+    </update>
+
+    <delete id="deleteData">
+        /* DeleteData */
+        DELETE FROM BOB_BOARD
+        WHERE
+        no = #{no}
+    </delete>
+
+</mapper>

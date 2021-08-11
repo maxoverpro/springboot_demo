@@ -1,0 +1,38 @@
+{{>layout/header}}
+
+<script>
+
+    function fdelete() {
+        $.ajax({
+                dataType: "json",
+                method: "post",
+                url: "/api/deleteproc",
+                data: {
+                    "no": $("#no").val()
+                    },
+                success: function(data){
+                    alert('삭제');
+                    location.href = '/';
+                }
+        });
+    }
+
+</script>
+
+<h1>게시글 삭제</h1>
+
+<form>
+    <table border="1">
+        <tr>
+            <td>NO</td>
+            <td><input type="text" class="form-control" id="no" placeholder="삭제할 글 번호 입력"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="button" class="btn btn-primary" id="btn-save" onclick="fdelete()">삭제</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{{>layout/footer}}
